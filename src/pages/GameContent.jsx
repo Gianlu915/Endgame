@@ -1,10 +1,10 @@
 export function GameContent(){
     return (
         <>
-            <div className="result">
-               <p>You win!</p>
+            <section className="game-status">
+               <h2>You win!</h2>
                <p>Well done!</p>
-            </div>
+            </section>
         </>
     )
 }

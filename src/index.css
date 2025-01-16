@@ -31,10 +31,9 @@ body {
     text-align: center;
 }
 
-.result{
+section.game-status{
     background-color: rgba(16, 169, 91, 1);
     width: 352px;
-    height:  59px;
     padding: 6px 0px 6px 0px;
     border-radius: 4px 0px 0px 0px;
     display: flex;
@@ -42,3 +41,12 @@ body {
     align-items: center;
 }
 
+section.game-status h2{
+    font-size: 1.25rem;
+    margin: 5px;
+    color: rgba(249, 244, 218, 1);
+}
+
+section.game-status p{
+    margin: 5px;
+}

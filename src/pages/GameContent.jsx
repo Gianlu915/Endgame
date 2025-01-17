@@ -11,12 +11,12 @@ export function GameContent(){
 
     const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length;
 
+    
+
     const isGameWon = 
         currentWord.split("").every(letter => guessedLetters.includes(letter))
     const isGameLost = wrongGuessCount >= languages.length - 1
-    const isGameOver = isGameWon || isGameLost
-
-
+    const isGameOver = isGameWon || isGameLost;
  
     function addGuessedLetter(letter) {
         setGuessedLetters(prevLetters => 
@@ -43,12 +43,16 @@ export function GameContent(){
         console.log(className)
 
         return (
-            <button
+            
+             <button
             className={className}
         onClick={() => addGuessedLetter(letter)}
+        disabled={isGameOver}
         key={letter}>
         {letter.toUpperCase()}
+    
           </button>
+        
         )
     }
        
@@ -73,9 +77,22 @@ export function GameContent(){
    
 return (
         <>
-            <section className="game-status">
-               <h2>You win!</h2>
-               <p>Well done! </p>
+          <section className={clsx("game-status", {
+            "game-won": isGameWon,
+            "game-lost": isGameLost
+            })}>        
+            {isGameWon && (
+            <>
+                <h2>You won!</h2>
+                <p>Congratulations! 🎉</p>
+            </>
+            )}
+            {isGameLost && (
+            <>
+                <h2>You lost!</h2>
+                <p>Better luck next time!</p>
+            </>
+            )}
             </section>
 
             <section className="language-chips"> 
@@ -90,7 +107,7 @@ return (
             {keyboardElements}
             </section>
 
-            {isGameOver && <button className="new-game">New game</button>}
+            {isGameLost || isGameWon && <button className="new-game">New game</button>}
         </>
     )
 }

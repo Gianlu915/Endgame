@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { clsx } from "clsx"
 import { languages } from "../languages"
+import { randomWord } from "../utils";
 
 export function GameContent(){
 
 
-    const [currentWord, setCurrentWorld] = useState("react");
+    const [currentWord, setCurrentWorld] = useState(() => randomWord());
 
     const [guessedLetters, setGuessedLetters] = useState([]);
 
@@ -48,6 +49,7 @@ export function GameContent(){
             className={className}
         onClick={() => addGuessedLetter(letter)}
         disabled={isGameOver}
+        aria-disabled={guessedLetters.includes(letter)}aria-label={`Letter ${letter}`}
         key={letter}>
         {letter.toUpperCase()}
     
@@ -74,6 +76,11 @@ export function GameContent(){
  const letterElements = currentWord.split('').map((letter,index) => (
     <span key={index}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ""}</span>
  ))
+
+ function resetGame(){
+    setCurrentWorld((randomWord))
+    setGuessedLetters([])
+ }
    
 return (
         <>
@@ -107,7 +114,7 @@ return (
             {keyboardElements}
             </section>
 
-            {isGameLost || isGameWon && <button className="new-game">New game</button>}
+            {isGameLost || isGameWon && <button onClick={resetGame}className="new-game">New game</button>}
         </>
     )
 }

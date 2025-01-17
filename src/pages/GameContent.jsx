@@ -5,6 +5,12 @@ export function GameContent(){
 
     const [currentWord, setCurrentWorld] = useState("react");
 
+    const alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    const keyboardElements = alphabet.split('').map(letter => (
+        <button key={letter}>{letter.toUpperCase()}</button>
+    ));
+
    const languageElements = languages.map(language => {
 
     const styles = {
@@ -34,6 +40,12 @@ return (
             <section className="word">
             {letterElements}
             </section>
+
+            <section className="keyboard">
+            {keyboardElements}
+            </section>
+
+            <button className="new-game">New game</button>
         </>
     )
 }

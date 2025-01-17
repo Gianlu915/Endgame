@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: "Hanken Grotesk", Arial, sans-serif;
@@ -9,44 +13,68 @@ body {
     justify-content: center;
 }
 
-.main-content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.main-content h3{
-    font-family: Hanken Grotesk;
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: rgba(249, 244, 218, 1);
-}
-
-.main-content p{
-    font-family: Hanken Grotesk;
-    font-size: 0.875rem;
-    max-width: 350px;
-    color: rgba(142, 142, 142, 1);
+header {
     text-align: center;
 }
 
-section.game-status{
-    background-color: rgba(16, 169, 91, 1);
-    width: 352px;
-    padding: 6px 0px 6px 0px;
-    border-radius: 4px 0px 0px 0px;
+header > h1 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #F9F4DA;
+}
+
+header > p {
+    font-size: 0.875rem;
+    max-width: 350px;
+    color: #8E8E8E;
+}
+
+section.game-status {
+    background-color: #10A95B;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #F9F4DA;
+    border-radius: 4px;
+    margin-block: 30px;
 }
 
-section.game-status h2{
+section.game-status > p {
+    margin: 5px;
+}
+
+section.game-status > h2 {
     font-size: 1.25rem;
-    margin: 5px;
-    color: rgba(249, 244, 218, 1);
+    margin: 5px
 }
 
-section.game-status p{
-    margin: 5px;
+section.language-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    max-width: 350px;
+    margin-bottom: 36px;
+}
+
+span.chip {
+    border-radius: 3px;
+    padding: 4.5px;
+}
+
+section.word{
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+
+section.word > span{
+    height: 40px;
+    width: 40px;
+    background-color: #323232;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.125rem;
+    border-bottom: 1px solid #F9F4DA;
 }

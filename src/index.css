@@ -61,6 +61,11 @@ span.chip {
     padding: 4.5px;
 }
 
+.chip.lost {
+    text-decoration: line-through;
+    color: red;  /* Modifica come preferisci */
+}
+
 section.word{
     display: flex;
     justify-content: center;

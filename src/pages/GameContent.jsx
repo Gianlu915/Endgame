@@ -8,6 +8,15 @@ export function GameContent(){
     const [currentWord, setCurrentWorld] = useState("react");
 
     const [guessedLetters, setGuessedLetters] = useState([]);
+
+    const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length;
+
+    const isGameWon = 
+        currentWord.split("").every(letter => guessedLetters.includes(letter))
+    const isGameLost = wrongGuessCount >= languages.length - 1
+    const isGameOver = isGameWon || isGameLost
+
+
  
     function addGuessedLetter(letter) {
         setGuessedLetters(prevLetters => 
@@ -16,8 +25,7 @@ export function GameContent(){
                 [...prevLetters, letter]
         )
     }
-
-   console.log(guessedLetters)
+    
 
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -46,19 +54,21 @@ export function GameContent(){
        
     );
 
-   const languageElements = languages.map(language => {
+   const languageElements = languages.map((language,index) => {
+    const isLanguageLost  = index < wrongGuessCount
 
     const styles = {
         backgroundColor: language.backgroundColor,
         color: language.color
     }
+   
     return (
-        <span key={language.name} className="chip" style={styles}>{language.name}</span>
+        <span key={language.name} className={`chip ${isLanguageLost ? "lost" : ""}`} style={styles}>{language.name}</span>
     )
    })
 
  const letterElements = currentWord.split('').map((letter,index) => (
-    <span key={index}>{letter.toUpperCase()}</span>
+    <span key={index}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ""}</span>
  ))
    
 return (
@@ -80,7 +90,7 @@ return (
             {keyboardElements}
             </section>
 
-            <button className="new-game">New game</button>
+            {isGameOver && <button className="new-game">New game</button>}
         </>
     )
 }

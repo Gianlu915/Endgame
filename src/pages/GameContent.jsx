@@ -41,7 +41,7 @@ export function GameContent(){
             wrong: isWrong
         })
 
-        console.log(className)
+        console.log(currentWord)
 
         return (
             
@@ -73,14 +73,24 @@ export function GameContent(){
     )
    })
 
- const letterElements = currentWord.split('').map((letter,index) => (
-    <span key={index}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ""}</span>
- ))
+   const letterElements = currentWord.split("").map((letter, index) => {
+    const shouldRevealLetter = isGameLost || guessedLetters.includes(letter)
+    const letterClassName = clsx(
+        isGameLost && !guessedLetters.includes(letter) && "missed-letter"
+    )
+    return (
+        <span key={index} className={letterClassName}>
+            {shouldRevealLetter ? letter.toUpperCase() : ""}
+        </span>
+    )
+})
 
  function resetGame(){
     setCurrentWorld((randomWord))
     setGuessedLetters([])
  }
+
+ console.log(letterElements)
    
 return (
         <>
@@ -107,14 +117,15 @@ return (
             </section>
 
             <section className="word">
-            {letterElements}
+            { letterElements}
+            
             </section>
 
             <section className="keyboard">
             {keyboardElements}
             </section>
 
-            {isGameLost || isGameWon && <button onClick={resetGame}className="new-game">New game</button>}
+            {(isGameLost || isGameWon) && <button onClick={resetGame}className="new-game">New game</button>}
         </>
     )
 }

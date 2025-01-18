@@ -1,8 +1,22 @@
-# React + Vite
+Endgame - An Interactive Word-Guessing Game Built with React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Description:
+Endgame is a fun and dynamic word-guessing game where players attempt to guess a hidden word before running out of chances. The game features visual feedback for correct and incorrect guesses, responsive design, and a "New Game" option to start fresh after a win or loss.
 
-Currently, two official plugins are available:
+Technologies Used:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React
+JavaScript
+CSS
+Vite
+Features:
+
+Interactive keyboard with color-coded feedback for guessed letters.
+Dynamic word display that updates as you guess.
+Customizable word list and language support.
+Clean and responsive user interface.
+How to Play:
+
+Guess one letter at a time by clicking the buttons on the on-screen keyboard.
+Avoid exceeding the maximum number of incorrect guesses.
+Win by revealing all the letters of the word before the game ends!
